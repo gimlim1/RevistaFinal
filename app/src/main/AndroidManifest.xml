@@ -32,6 +32,7 @@
         <activity
             android:name=".Iniciar"
             android:label="Iniciar Sesión" >
+            android
         </activity>
         <activity
             android:name=".Revista"
