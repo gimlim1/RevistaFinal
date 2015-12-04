@@ -3,21 +3,21 @@ package Modelo.Datos;
 import java.sql.PreparedStatement;
 
 import Modelo.BD.ConexionBD;
-import Modelo.Negocio.Entidad.clsRevista;
+import Modelo.Negocio.Entidad.clsHoja;
 
 
-public class DARevista {
+public class DAHoja {
 
     private PreparedStatement statement;
 
-    public boolean InsertarRevista(clsRevista revista){
+    public boolean InsertarHoja(clsHoja hoja){
         boolean bandera=false;
         try{
-            statement = ConexionBD.getInstancia().getConexion().prepareStatement("INSERT INTO revistas(Autor,Tema,Titulo,idEmpresa) VALUES (?,?,?,?)");
-            statement.setString(1,revista.getAutor());
-            statement.setString(2, revista.getTema());
-            statement.setString(3, revista.getTitulo());
-            statement.setInt(4,revista.getIdempresa());
+            statement = ConexionBD.getInstancia().getConexion().prepareStatement("INSERT INTO hojas(numeroHoja,Titulo,Texto,imagenURL) VALUES (?,?,?,?)");
+            statement.setInt(1, hoja.getNumeroHoja());
+            statement.setString(2, hoja.getTitulo());
+            statement.setString(3, hoja.getTexto());
+            statement.setString(4, hoja.getImagenURL());
 
             int rs = statement.executeUpdate();
 
@@ -32,7 +32,5 @@ public class DARevista {
         }
         return bandera;
     }
-
-
 
 }

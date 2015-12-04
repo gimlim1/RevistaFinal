@@ -34,6 +34,7 @@ dependencies {
     compile 'com.microsoft.azure.android:azure-storage-android:0.7.0@aar'
     compile files('src/main/java/libs/commons-codec-1.9.jar')
 }
+
 buildscript {
     repositories {
         jcenter()
