@@ -20,35 +20,49 @@
         android:label="Revista Digital"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".Registrar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_registrar"
             android:theme="@style/FullscreenTheme" >
         </activity>
+
         <activity
             android:name=".Iniciar"
             android:label="Iniciar Sesión" >
-            android
+
+            <!---Asigno actividad Main/Launcher-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
         </activity>
+
         <activity
             android:name=".Revista"
             android:label="@string/title_activity_revista"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+
         <activity
             android:name=".Lector.Menu"
             android:label="Revista Digital"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+
         <activity
             android:name=".Admin.AdminMenu"
             android:label="@string/title_activity_admin_menu"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".ModificarCuenta"
+
+        <activity
+            android:name=".ModificarCuenta"
             android:label="Modificar Cuenta">
         </activity>
+
     </application>
 
 </manifest>
