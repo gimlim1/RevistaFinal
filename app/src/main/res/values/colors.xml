@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#00b9a8</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="primary_material_light_1">#8bc34a</color>
-    <color name="primary_material_light_2">#8bc34a</color>
+    <color name="primary_material_light_2">#0eb9a9</color>
     <color name="primary_dark_material_light">#ffffff</color>
+    <color name="primary_text_material_light">#eb000000</color>
+    <color name="windowBackground">#d2ff00c8</color>
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/VerRevistas" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="Ver Revistas" />
+    </group>
+
+    <item android:title="Cuenta">
+        <menu>
+            <item android:id="@+id/Modificar" android:icon="@android:drawable/ic_menu_manage"
+                android:title="Modificar Cuenta" />
+            <item android:id="@+id/Cerrar" android:icon="@android:drawable/ic_menu_close_clear_cancel"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+
+</menu>

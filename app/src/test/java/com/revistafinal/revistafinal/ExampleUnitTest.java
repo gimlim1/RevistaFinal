@@ -1,4 +1,4 @@
-package com.revistafinal.revistafinal;
+package com.revistafinal.Controlador;
 
 import org.junit.Test;
 
