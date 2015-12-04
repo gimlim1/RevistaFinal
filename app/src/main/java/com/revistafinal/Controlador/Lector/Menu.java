@@ -13,17 +13,21 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.revistafinal.Controlador.ModificarCuenta;
 import com.revistafinal.Controlador.R;
 
+import Modelo.Listas.Revistas;
+import Modelo.Listas.RevistasAdapter;
 import Modelo.Negocio.Entidad.clsUsuario;
 
-public class Menu extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Menu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private clsUsuario User;
     private TextView txtNombre;
@@ -31,6 +35,8 @@ public class Menu extends AppCompatActivity
     private static final int REQUEST_CODE = 1;
     private Bitmap bitmap;
     private ImageView imageView;
+    private ListView lv;
+
 
 
     private void Parametros(){
@@ -45,6 +51,7 @@ public class Menu extends AppCompatActivity
         User = (clsUsuario)i.getSerializableExtra("Usuario");
         txtNombre = (TextView) findViewById(R.id.Nombre);
         txtCorreo = (TextView) findViewById(R.id.Correo);
+        lv= (ListView) findViewById(R.id.Lista);
         Parametros();
 
 
@@ -76,6 +83,40 @@ public class Menu extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //Implementación de la Lista
+
+        Revistas revistas_data[] = new Revistas[]{
+                new Revistas(R.drawable.ic_launcher, "Revista # 1"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 2"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 3"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 4"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 5"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 6"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 7"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 8"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 9"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 10"),
+                new Revistas(R.drawable.ic_launcher, "Revista # 11"),
+        };
+
+        RevistasAdapter adapter = new RevistasAdapter(this, R.layout.listview_item_row, revistas_data);
+
+        View header =  getLayoutInflater().inflate(R.layout.list_header_row, null);
+        lv.addHeaderView(header);
+        lv.setAdapter(adapter);
+
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView v = (TextView) view.findViewById(R.id.tv);
+                Toast.makeText(getApplicationContext(), v.getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 /*
     public void pickImage(View View) {
