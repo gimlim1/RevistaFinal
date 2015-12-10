@@ -16,14 +16,12 @@ public class DAUsuario {
     public boolean InsertarUsuario(clsUsuario usuario){
         boolean bandera=false;
         try{
-            statement = ConexionBD.getInstancia().getConexion().prepareStatement("INSERT INTO usuarios(Usuario,Password,Correo,Nombre,FechaRegistro,idPerfil,idEmpresa) VALUES (?,?,?,?,?,?,?)");
-            statement.setString(1,usuario.getUsuario());
+            statement = ConexionBD.getInstancia().getConexion().prepareStatement("INSERT INTO usuarios(Correo,Password,FechaRegistro,idPerfil,idEmpresa) VALUES (?,?,?,?,?)");
+            statement.setString(1,usuario.getCorreo());
             statement.setString(2, usuario.getPassword());
-            statement.setString(3, usuario.getCorreo());
-            statement.setString(4,usuario.getNombre());
-            statement.setDate(5, (Date)usuario.getFechaRegistro());
-            statement.setInt(6, usuario.getIdperfil());
-            statement.setInt(7,usuario.getIdempresa());
+            statement.setDate(3, (Date)usuario.getFechaRegistro());
+            statement.setInt(4, usuario.getIdperfil());
+            statement.setInt(5,usuario.getIdempresa());
             int rs = statement.executeUpdate();
 
             if(rs!=0){
@@ -55,7 +53,7 @@ public class DAUsuario {
         }
         return bandera;
     }
-
+/*
     public boolean ConsultarUsuarioExiste(String Usuario){
         boolean bandera=false;
         try{
@@ -73,20 +71,18 @@ public class DAUsuario {
         }
         return bandera;
     }
-
-    public clsUsuario Loggear(String Usuario,String Password){
+*/
+    public clsUsuario Loggear(String Correo,String Password){
         clsUsuario usu = new clsUsuario();
         try{
-            statement = ConexionBD.getInstancia().getConexion().prepareStatement("SELECT idUsuario,Usuario,Password,Correo,Nombre,FechaRegistro,idPerfil FROM usuarios where Usuario = ? and Password = ?");
-            statement.setString(1, Usuario);
+            statement = ConexionBD.getInstancia().getConexion().prepareStatement("SELECT idUsuario,Correo,Password,FechaRegistro,idPerfil FROM usuarios where Correo = ? and Password = ?");
+            statement.setString(1, Correo);
             statement.setString(2, Password);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 usu.setIdusuario(rs.getInt("idUsuario"));
-                usu.setUsuario(rs.getString("Usuario"));
                 usu.setPassword(rs.getString("Password"));
                 usu.setCorreo(rs.getString("Correo"));
-                usu.setNombre(rs.getString("Nombre"));
                 usu.setFechaRegistro(rs.getDate("FechaRegistro"));
                 usu.setIdperfil(rs.getInt("idPerfil"));
             }

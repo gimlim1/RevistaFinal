@@ -31,9 +31,8 @@ public class ModificarCuenta extends AppCompatActivity {
     private boolean rescorreo;
 
     private void Parametros(){
-        txtNombre.setText(Usuario.getNombre());
         txtCorreo.setText(Usuario.getCorreo());
-        txtUsuario.setText(Usuario.getUsuario());
+
     }
 
     private boolean Confirmar(){
@@ -47,27 +46,16 @@ public class ModificarCuenta extends AppCompatActivity {
         ArrayList list = new ArrayList();
         rescorreo=false;
         resuser=false;
-
-        if (!Usuario.getNombre().equals(txtNombre.getText().toString().trim())){
-            list.add(1);
-            Usuario.setNombre(txtNombre.getText().toString().trim());
-        }
-
-        if (!Usuario.getUsuario().equals(txtUsuario.getText().toString().trim())){
-            list.add(2);
-            Usuario.setUsuario(txtUsuario.getText().toString().trim());
-            resuser=true;
-        }
         if(Confirmar()){
             Cifrar cifrar = new Cifrar();
             String Password= cifrar.Encriptar(txtPassword.getText().toString().trim());
             if(!Usuario.getPassword().equals(Password)){
-                list.add(3);
+                list.add(1);
                 Usuario.setPassword(txtPassword.getText().toString().trim());
             }
         }
         if(!Usuario.getCorreo().equals(txtCorreo.getText().toString().trim())){
-            list.add(4);
+            list.add(2);
             Usuario.setCorreo(txtCorreo.getText().toString().trim());
             rescorreo=true;
         }
@@ -80,9 +68,7 @@ public class ModificarCuenta extends AppCompatActivity {
         setContentView(R.layout.activity_modificar_cuenta);
         Intent i = getIntent();
         Usuario = (clsUsuario)i.getSerializableExtra("Usuario");
-        txtNombre = (TextView) findViewById(R.id.txtNombre);
         txtCorreo = (TextView) findViewById(R.id.txtCorreo);
-        txtUsuario= (TextView) findViewById(R.id.txtUsuario);
         txtPassword = (TextView) findViewById(R.id.txtPassword);
         txtConfirmar = (TextView) findViewById(R.id.txtConfirmar);
         Actualizar = (Button) findViewById(R.id.bt_Actualizar);
@@ -95,7 +81,7 @@ public class ModificarCuenta extends AppCompatActivity {
                 ArrayList Lista= NoSeRepite();
                 if(txtPassword.getText().length()>6 || txtPassword.getText().toString().trim().equals("")){
                 if (Lista.size() != 0) {
-                    Modificar.ModificarUsuario(Usuario, Lista, resuser, rescorreo, ModificarCuenta.this);
+                    Modificar.ModificarUsuario(Usuario, Lista, rescorreo, ModificarCuenta.this);
                     Intent intent = new Intent(ModificarCuenta.this, Menu.class);
                     intent.putExtra("Usuario",Usuario);
                     startActivity(intent);

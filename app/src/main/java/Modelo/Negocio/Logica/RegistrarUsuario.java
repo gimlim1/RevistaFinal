@@ -14,22 +14,22 @@ import Modelo.Negocio.Entidad.clsUsuario;
  */
 public class RegistrarUsuario {
 
-    private boolean SeRepite(String Usuario,String Correo,Registrar registrar){
+    private boolean SeRepite(String Correo,Registrar registrar){
         boolean bandera=false;
         DAUsuario user= new DAUsuario();
         Alerta alertar= new Alerta();
 
 
-        if(user.ConsultarUsuarioExiste(Usuario) && user.ConsultarCorreoExiste(Correo)){
-            alertar.Alerta(registrar,"Usuario y Correo Existente!!","Error");
+        if(user.ConsultarCorreoExiste(Correo)){
+            alertar.Alerta(registrar,"Correo Existente!!","Error");
             bandera=true;
-        }else if(user.ConsultarUsuarioExiste(Usuario)){
+        }/*else if(user.ConsultarUsuarioExiste(Usuario)){
             alertar.Alerta(registrar, "Usuario Existente!!", "Error");
             bandera=true;
         }else if(user.ConsultarCorreoExiste(Correo)){
             alertar.Alerta(registrar, "Correo Existente!!", "Error");
             bandera=true;
-        }
+        }*/
         return bandera;
 
     }
@@ -42,7 +42,7 @@ public class RegistrarUsuario {
         if(!validar.validate(usuario.getCorreo())){
             alertar.Alerta(registrar, "Correo Inválido!!", "Error");
         }else{
-            if(!SeRepite(usuario.getUsuario(), usuario.getCorreo(),registrar)){
+            if(!SeRepite(usuario.getCorreo(),registrar)){
                 DAUsuario DA= new DAUsuario();
                 Cifrar cifrar=new Cifrar();
                 usuario.setPassword(cifrar.Encriptar(usuario.getPassword()));

@@ -36,24 +36,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Nombre:"
-                android:id="@+id/textView9"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtNombre"
-                android:textColor="#ffffff"
-                android:autoText="false"
-                android:inputType="text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Correo:"
                 android:id="@+id/textView12"
                 android:textStyle="bold"
@@ -65,31 +47,14 @@
                 android:inputType="textEmailAddress"
                 android:ems="10"
                 android:id="@+id/txtCorreo"
-                android:layout_gravity="center_horizontal"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Usuario:"
-                android:id="@+id/textView13"
-                android:textStyle="bold"
-                android:textColor="#ffffff" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtUsuario"
-                android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff"
-                android:inputType="text" />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Password:"
+                android:text="Contraseña:"
                 android:id="@+id/textView14"
                 android:textStyle="bold"
                 android:textColor="#ffffff" />
@@ -106,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Confirmar Password:"
+                android:text="Confirmar Contraseña:"
                 android:id="@+id/textView15"
                 android:textStyle="bold"
                 android:textColor="#ffffff" />

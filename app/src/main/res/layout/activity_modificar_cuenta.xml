@@ -28,24 +28,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Nombre:"
-                android:id="@+id/textView4"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtNombre"
-                android:textColor="#ffffff"
-                android:autoText="false"
-                android:inputType="text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Correo:"
                 android:id="@+id/textView5"
                 android:textStyle="bold"
@@ -59,23 +41,6 @@
                 android:ems="10"
                 android:id="@+id/txtCorreo"
                 android:textColor="#ffffff" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Usuario:"
-                android:id="@+id/textView6"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:layout_gravity="center_horizontal" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtUsuario"
-                android:textColor="#ffffff"
-                android:inputType="text" />
 
             <TextView
                 android:layout_width="wrap_content"
