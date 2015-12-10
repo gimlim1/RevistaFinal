@@ -89,8 +89,6 @@ public class RegistroRevista extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 }
 

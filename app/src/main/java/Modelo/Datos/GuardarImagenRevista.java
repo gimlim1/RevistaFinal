@@ -1,10 +1,22 @@
 package Modelo.Datos;
 
-
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.blob.*;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
@@ -15,7 +27,7 @@ public class GuardarImagenRevista {
     private static final String ConexionImagenes =
             "DefaultEndpointsProtocol=http;" +
                     "AccountName=revistadigital;" +
-                    "AccountKey=UOraHPG0BxgDTZJIxUVSrvwVEvTmwZw2xDf7R58XT8npvkN/eLjYgk2w41DQNCY/yomP7auxRCKecIjovxKw8g==";
+                    "AccountKey=c0h0xrVlu9+4EkWLaCJn9bv7+ecpm9SET9U9NRUzxzMcav1dfh2KmsjbMflJ5zsXFmgM/szhuEDY+S08lQTrDg==";
 
 
 
@@ -28,7 +40,7 @@ public class GuardarImagenRevista {
              // crea el cliente
             CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
             //crear el contenedor si no existe, debe de ser en miniscula
-            CloudBlobContainer container = blobClient.getContainerReference("caca");
+            CloudBlobContainer container = blobClient.getContainerReference("contenedor");
             container.createIfNotExists();
         }
         catch (Exception e) {
@@ -38,31 +50,20 @@ public class GuardarImagenRevista {
     }
 
 
-    public void CrearBlob(InputStream stream,String TituloRevista){
+    public void CrearBlob(InputStream stream){
         try
         {
-
             CloudStorageAccount storageAccount = CloudStorageAccount.parse(ConexionImagenes);
 
             // Crea el cliente
             CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-
-            int i =0;
             //Obtiene el contenedor
-            CloudBlobContainer container = blobClient.getContainerReference(TituloRevista);
+            CloudBlobContainer container = blobClient.getContainerReference("contenedor");
 
-            for (ListBlobItem blobItem : container.listBlobs()) {
-                // If the item is a blob, not a virtual directory.
-                if (blobItem instanceof CloudBlob) {
-                    CloudBlob blob = (CloudBlob) blobItem;
-                    i++;
-                }
-            }
 
-            i= i+1;
-            String nombre= "Imagen"+i+".jpg";
-            CloudBlockBlob blob = container.getBlockBlobReference(nombre);
+            CloudBlockBlob blob = container.getBlockBlobReference("victor.jpg");
+
 
             blob.upload(stream,stream.available());
         }
