@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.revistafinal.Controlador.Admin.AdminMenu;
 import com.revistafinal.Controlador.Lector.Menu;
 import Modelo.Mensajes.Alerta;
 import Modelo.Negocio.Entidad.clsUsuario;
@@ -94,10 +95,15 @@ public class Iniciar extends AppCompatActivity  {
                 Loggear log= new Loggear();
                 clsUsuario user=log.LogIn(usuario,password);
                 if(user.getIdusuario()!=0){
+                    //if(user.getIdperfil()==1){
                     Intent intent = new Intent(Iniciar.this, Menu.class);
                     intent.putExtra("Usuario", user);
                     startActivity(intent);
-
+                   /* }else {
+                        Intent intent = new Intent(Iniciar.this, Menu.class);
+                        intent.putExtra("Usuario", user);
+                        startActivity(intent);
+                    }*/
                 }else{dialogo.Alerta(Iniciar.this, "Usuario y Password Inválidos", "Error");}
              }else{dialogo.Alerta(Iniciar.this, "Password Debe Ser Mayor de 6 Caracteres", "Error");}
          }

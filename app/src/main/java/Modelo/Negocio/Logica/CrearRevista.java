@@ -1,27 +1,26 @@
 package Modelo.Negocio.Logica;
 
 
+import com.revistafinal.Controlador.Admin.RegistroRevista;
+
+import Modelo.Datos.DARevista;
+import Modelo.Mensajes.Alerta;
+import Modelo.Negocio.Entidad.clsRevista;
+
 public class CrearRevista {
 
-    //Incompleto
-
-    /*
-    public boolean CrearRevista(clsRevista revista,Registrar registrar){
-        Alerta alertar= new Alerta();
-        boolean bandera=false;
-        DARevista DA= new DARevista();
-                if(DA.InsertarUsuario(usuario)){
-                    EnviarCorreo correo = new EnviarCorreo();
-                    String Subject="Se Ha Registrado Con Éxito En La Revista Digital";
-                    correo.email(usuario.getCorreo(), Subject, usuario.toString());
-                    alertar.Alerta(registrar, "Se Ha Registrado Con Éxito!", "Éxito");
-                    bandera=true;
-                }else{
-                    alertar.Alerta(registrar, "No se pudo registrar, intente de nuevo!", "Error");
-                }
-            }
+    public boolean CreacionRevista(clsRevista revista, RegistroRevista registrar) {
+        Alerta alertar = new Alerta();
+        boolean bandera = false;
+        DARevista DA = new DARevista();
+        if (DA.InsertarRevista(revista)) {
+            alertar.Alerta(registrar, "Ha registrado con éxito!", "Éxito");
+            bandera = true;
+        } else {
+            alertar.Alerta(registrar, "No se pudo registrar, intente de nuevo!", "Error");
         }
         return bandera;
     }
-    */
 }
+
+

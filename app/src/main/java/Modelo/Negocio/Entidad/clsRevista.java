@@ -4,17 +4,17 @@ package Modelo.Negocio.Entidad;
 public class clsRevista {
 
     private int idRevista, idempresa;
-    private String Autor,Tema,titulo;
+    private String Autor,Tema,titulo,Portada;
 
     public clsRevista() {
     }
 
-    public clsRevista(int idRevista, int idempresa, String autor, String tema, String titulo) {
-
+    public clsRevista(String autor, String tema, String titulo, int idempresa ,String portada) {
         this.idempresa = idempresa;
         Autor = autor;
         Tema = tema;
         this.titulo = titulo;
+        this.Portada = portada;
     }
 
     public int getIdRevista() {
@@ -51,5 +51,13 @@ public class clsRevista {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getPortada() {
+        return Portada;
+    }
+
+    public void setPortada(String portada) {
+        Portada = portada;
     }
 }

@@ -13,12 +13,12 @@ public class DARevista {
     public boolean InsertarRevista(clsRevista revista){
         boolean bandera=false;
         try{
-            statement = ConexionBD.getInstancia().getConexion().prepareStatement("INSERT INTO revistas(Autor,Tema,Titulo,idEmpresa) VALUES (?,?,?,?)");
+            statement = ConexionBD.getInstancia().getConexion().prepareStatement("INSERT INTO revistas(Autor,Tema,Titulo,idEmpresa, Portada) VALUES (?,?,?,?,?)");
             statement.setString(1,revista.getAutor());
             statement.setString(2, revista.getTema());
             statement.setString(3, revista.getTitulo());
             statement.setInt(4,revista.getIdempresa());
-
+            statement.setString(5, revista.getPortada());
             int rs = statement.executeUpdate();
 
             if(rs!=0){

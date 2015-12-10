@@ -10,6 +10,11 @@
             android:icon="@android:drawable/ic_menu_gallery"
             android:title="Ver Revistas" />
 
+        <item
+            android:id="@+id/CrearRevista"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="Crear Revista" />
+
     </group>
 
     <item

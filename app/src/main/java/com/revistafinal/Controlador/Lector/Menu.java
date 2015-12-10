@@ -20,8 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.revistafinal.Controlador.Admin.RegistroRevista;
 import com.revistafinal.Controlador.ModificarCuenta;
 import com.revistafinal.Controlador.R;
+import com.revistafinal.Controlador.prueba;
 
 import Modelo.Listas.Revistas;
 import Modelo.Listas.RevistasAdapter;
@@ -32,15 +34,11 @@ public class Menu extends AppCompatActivity implements NavigationView.OnNavigati
     private clsUsuario User;
     private TextView txtNombre;
     private TextView txtCorreo;
-    private static final int REQUEST_CODE = 1;
-    private Bitmap bitmap;
-    private ImageView imageView;
     private ListView lv;
 
 
 
     private void Parametros(){
-        txtNombre.setText(User.getNombre());
         txtCorreo.setText(User.getCorreo());
     }
 
@@ -55,12 +53,7 @@ public class Menu extends AppCompatActivity implements NavigationView.OnNavigati
         Parametros();
 
 
-        /*imageView = (ImageView) findViewById(R.id.imageView2);
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(intent, REQUEST_CODE);*/
+
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -118,36 +111,7 @@ public class Menu extends AppCompatActivity implements NavigationView.OnNavigati
 
 
     }
-/*
-    public void pickImage(View View) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(intent, REQUEST_CODE);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK)
-            try {
-                // We need to recyle unused bitmaps
-                if (bitmap != null) {
-                    bitmap.recycle();
-                }
-                InputStream stream = getContentResolver().openInputStream(
-                        data.getData());
-                bitmap = BitmapFactory.decodeStream(stream);
-                imageView.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-*/
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -191,12 +155,18 @@ public class Menu extends AppCompatActivity implements NavigationView.OnNavigati
             // Handle the camera action
         }else if (id == R.id.Modificar) {
 
-            Intent intent = new Intent(Menu.this, ModificarCuenta.class);
+            Intent intent = new Intent(Menu.this, prueba.class);
             intent.putExtra("Usuario",User);
             startActivity(intent);
 
 
-        } else if (id == R.id.Cerrar) {
+        }else if (id == R.id.CrearRevista2) {
+
+            Intent intent = new Intent(Menu.this, RegistroRevista.class);
+            intent.putExtra("Usuario",User);
+            startActivity(intent);
+
+        }else if (id == R.id.Cerrar) {
 
         }
 

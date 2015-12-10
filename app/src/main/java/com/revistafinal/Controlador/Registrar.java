@@ -33,16 +33,7 @@ public class Registrar extends AppCompatActivity {
         View focusView = null;
         boolean bandera=true;
 
-        if (TextUtils.isEmpty(txtNombre.getText())) {
-            txtNombre.setError("Campo Requerido");
-            focusView = txtNombre;
-            bandera=false;
-        }
-        if (TextUtils.isEmpty(txtUsuario.getText())) {
-            txtUsuario.setError("Campo Requerido");
-            focusView = txtUsuario;
-            bandera=false;
-        }
+
         if (TextUtils.isEmpty(txtPassword.getText())) {
             txtPassword.setError("Campo Requerido");
             focusView = txtPassword;
@@ -66,11 +57,9 @@ public class Registrar extends AppCompatActivity {
         return bandera;
     }
     private void LimpiarCampos() {
-        txtNombre.setText("");
         txtConfirmar.setText("");
         txtEmail.setText("");
         txtPassword.setText("");
-        txtUsuario.setText("");
     }
 
 
@@ -81,21 +70,17 @@ public class Registrar extends AppCompatActivity {
         setContentView(R.layout.activity_registrar);
 
         Registrar = (Button) findViewById(R.id.btRegistrar);
-        txtUsuario = (EditText) findViewById(R.id.txtUsuario);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         txtEmail = (EditText) findViewById(R.id.txtCorreo);
-        txtNombre =(EditText) findViewById(R.id.txtNombre);
         txtConfirmar = (EditText) findViewById(R.id.txtConfirmar);
 
         Registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String usuario = txtUsuario.getText().toString().trim();
                 String Pass = txtPassword.getText().toString().trim();
                 String Email = txtEmail.getText().toString().trim();
-                String Nombre = txtNombre.getText().toString().trim();
                 String Confirmar = txtConfirmar.getText().toString().trim();
                 Alerta dialogo = new Alerta();
 
@@ -105,14 +90,15 @@ public class Registrar extends AppCompatActivity {
                         if(Pass.equals(Confirmar)){
                             Date fecha = new Date();
                             java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
-                            clsUsuario user = new clsUsuario(usuario, Pass, Email, Nombre, sqlDate, 1, 1);
+                            clsUsuario user = new clsUsuario(Pass, Email, sqlDate, 1, 1);
                             RegistrarUsuario agregar = new RegistrarUsuario();
                             if(agregar.AgregarUsuario(user,Registrar.this)){
                                 LimpiarCampos();
+                                Intent intent = new Intent(Registrar.this, Iniciar.class);
+                                startActivity(intent);
                             }
                         } else{dialogo.Alerta(Registrar.this, "Contraseñas No Coinciden.", "Error");}
                      } else{dialogo.Alerta(Registrar.this, "Password Debe Ser Mayor de 6 Caracteres", "Error");}
-
                 }
             }
         });

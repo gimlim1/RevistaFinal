@@ -6,6 +6,7 @@ import com.revistafinal.Controlador.Registrar;
 import Modelo.Cifrar.Cifrar;
 import Modelo.Cifrar.Decifrar;
 import Modelo.Datos.DAUsuario;
+import Modelo.Datos.GuardarImagenRevista;
 import Modelo.Negocio.Entidad.clsUsuario;
 /**
  * Created by Ricardo Pineda G on 24-Nov-15.

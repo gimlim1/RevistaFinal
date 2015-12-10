@@ -11,22 +11,17 @@ import Modelo.Cifrar.Decifrar;
 public class clsUsuario implements Serializable {
 
     private int Idusuario;
-    private String Usuario;
     private String Password;
     private String Correo;
-    private String Nombre;
     private Date FechaRegistro;
     private int idperfil;
     private int idempresa;
 
     public clsUsuario(){}
 
-    public clsUsuario(String usuario,String password,String correo,String nombre,Date fecha,int perfil,int empresa){
-
-        this.Usuario=usuario;
+    public clsUsuario(String password,String correo,Date fecha,int perfil,int empresa){
         this.Password=password;
         this.Correo=correo;
-        this.Nombre=nombre;
         this.FechaRegistro=fecha;
         this.idperfil=perfil;
         this.idempresa=empresa;
@@ -39,14 +34,6 @@ public class clsUsuario implements Serializable {
 
     public void setIdusuario(int idusuario) {
         Idusuario = idusuario;
-    }
-
-    public String getUsuario() {
-        return Usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        Usuario = usuario;
     }
 
     public String getPassword() {
@@ -63,14 +50,6 @@ public class clsUsuario implements Serializable {
 
     public void setCorreo(String correo) {
         Correo = correo;
-    }
-
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String nombre) {
-        Nombre = nombre;
     }
 
     public Date getFechaRegistro() {
@@ -103,8 +82,8 @@ public class clsUsuario implements Serializable {
         try{
         Decifrar decifrar= new Decifrar();
         String password=decifrar.Desencriptar(getPassword());
-        Texto= "Bienvenido: "+ getNombre() + "\n\n" + "Se Ha Registrado Con Exito!!" +
-                "\n" + "Su Usuario: "+getUsuario()+ "\n" + "Su Password: " + password;
+        Texto= "Bienvenido A La Revista Digital!: " + "\n\n" + "Se Ha Registrado Con Exito!!" +
+                "\n" + "Su Usuario: "+getCorreo() + "\n" + "Su Password: " + password;
         }catch(Exception ex){
 
         }
