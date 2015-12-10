@@ -52,13 +52,13 @@ public class prueba extends AppCompatActivity {
                         data.getData());
                 //bitmap = BitmapFactory.decodeStream(stream);
                 GuardarImagenRevista imagen = new GuardarImagenRevista();
-<<<<<<< HEAD
+
                 imagen.crearcontenedor();
                 //imagen.CrearBlob(stream,"contenedor");
-=======
 
-                imagen.CrearBlob(stream,"contenedor");
->>>>>>> origin/master
+
+                //imagen.CrearBlob(stream,"contenedor");
+
                 DescargarImagenRevista imagenR = new DescargarImagenRevista();
 
                 imageView.setImageBitmap(imagenR.DescargarBlob("contenedor"));
